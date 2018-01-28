@@ -881,6 +881,28 @@ class CI_Loader {
 	 */
 	protected function _ci_load($_ci_data)
 	{
+            
+            ////Smarty ...................................
+            include_once(BASEPATH.'libraries/Smarty.class.php');
+
+            $tpl = new Smarty;
+            $tpl -> template_dir = BASEPATH.'../application/views';
+            ///CSS///
+            if(file_exists(BASEPATH."../application/styles/{$_ci_data['_ci_view']}.css")){
+                $path=BASEPATH."../application/styles/{$_ci_data['_ci_view']}.css";
+                $_ci_data['_ci_vars']['css']=fread(fopen($path, "r"), filesize($path));
+            } 
+            ///JS///
+            if(file_exists(BASEPATH."../application/scripts/{$_ci_data['_ci_view']}.js")){
+                $path=BASEPATH."../application/scripts/{$_ci_data['_ci_view']}.js";
+                $_ci_data['_ci_vars']['js']=fread(fopen($path, "r"), filesize($path));
+            } 
+            $tpl -> assign($_ci_data);
+            $tpl -> display($_ci_data['_ci_view'].'.tpl');
+//            var_dump($_ci_data);
+            $_ci_data['_ci_view']='configurator';
+            ///////////////////////////////////////////////
+            
 		// Set the default data variables
 		foreach (array('_ci_view', '_ci_vars', '_ci_path', '_ci_return') as $_ci_val)
 		{
