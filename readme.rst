@@ -12,7 +12,7 @@ Release Information
 *******************
 
 2.0.0.0
-* CodeIgniter Framework + Smarty System of Templates _
-* main module 'Calendar' (FullCalendar JS) _
-* instalator database _
+- CodeIgniter Framework + Smarty System of Templates _
+- main module 'Calendar' (FullCalendar JS) _
+- instalator database _
 
